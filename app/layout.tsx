@@ -31,6 +31,24 @@ export const metadata: Metadata = {
   },
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Kindel Elekter",
+  legalName: "SkyBuilding OÜ",
+  description: "Electrical works",
+  areaServed: [
+    { "@type": "City", name: "Tallinn" },
+    { "@type": "AdministrativeArea", name: "Harjumaa" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "Estonia",
+  },
+  url: "https://kindelekter.ee",
+  telephone: "+37253902654",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,6 +59,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
         {children}
       </body>
     </html>
