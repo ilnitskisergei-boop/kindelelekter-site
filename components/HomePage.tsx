@@ -934,20 +934,20 @@ export default function HomePage({ lang }: HomePageProps) {
               </div>
 
               <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                <p className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-semibold text-gray-900">
                   SkyBuilding OÜ
-                </p>
-                <p className="mt-1 text-sm text-gray-600">
+                </h3>
+                <p className="mt-2 text-sm text-gray-700">
                   KMKR: EE102011340
                 </p>
               </div>
 
               <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                <h3 className="text-sm font-medium text-gray-700">
-                  {isRu ? "Лицензия" : "Litsents"}
-                </h3>
-                <p className="mt-1 text-sm font-semibold text-gray-900">
+                <h3 className="text-sm font-semibold text-gray-900">
                   B-pädevus
+                </h3>
+                <p className="mt-2 text-sm text-gray-700">
+                  {isRu ? "Лицензия" : "Litsents"}
                 </p>
               </div>
             </div>
