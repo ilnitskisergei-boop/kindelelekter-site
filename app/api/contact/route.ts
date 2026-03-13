@@ -60,14 +60,11 @@ export async function POST(req: NextRequest) {
 
     const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL } = process.env;
 
-    if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL) {
-      return NextResponse.json(
-        {
-          ok: false,
-          error: "Email service is not configured.",
-        },
-        { status: 500 }
-      );
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+      console.error("SMTP config missing", {
+        SMTP_HOST,
+        SMTP_USER,
+      });
     }
 
     const transporter = nodemailer.createTransport({

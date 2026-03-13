@@ -158,7 +158,7 @@ const content: Record<
     contactPhoneLabel: "Telefon",
     contactPhoneValue: "+37253902654",
     contactEmailLabel: "E-post",
-    contactEmailValue: "kindelekter.ee@gmail.com",
+    contactEmailValue: "kindelelekter.ee@gmail.com",
     contactHoursLabel: "Tööaeg",
     contactHoursValue: "E–R: 09:00–18:00\nL–P: kokkuleppel",
     footerTagline: "Elektritööd Tallinnas ja Harjumaal.",
@@ -243,7 +243,7 @@ const content: Record<
     contactPhoneLabel: "Телефон",
     contactPhoneValue: "+37253902654",
     contactEmailLabel: "E-mail",
-    contactEmailValue: "kindelekter.ee@gmail.com",
+    contactEmailValue: "kindelelekter.ee@gmail.com",
     contactHoursLabel: "Время работы",
     contactHoursValue: "Пн–Пт: 09:00–18:00\nСб–Вс: по договорённости",
     footerTagline: "Электротехнические работы в Таллине и Харьюмаа.",
@@ -256,6 +256,7 @@ const content: Record<
 
 export default function HomePage({ lang }: HomePageProps) {
   const t = content[lang];
+  const isRu = lang === "ru";
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -274,15 +275,19 @@ export default function HomePage({ lang }: HomePageProps) {
     const newErrors: { name?: string; phone?: string; message?: string } = {};
 
     if (!name.trim()) {
-      newErrors.name = "Palun sisesta nimi";
+      newErrors.name = isRu ? "Пожалуйста, укажите имя" : "Palun sisesta nimi";
     }
     if (!phone.trim()) {
-      newErrors.phone = "Palun sisesta telefon";
+      newErrors.phone = isRu ? "Пожалуйста, укажите телефон" : "Palun sisesta telefon";
     } else if (!/^[0-9+\s-]{6,}$/.test(phone.trim())) {
-      newErrors.phone = "Palun sisesta korrektne telefoninumber";
+      newErrors.phone = isRu
+        ? "Пожалуйста, введите корректный номер телефона"
+        : "Palun sisesta korrektne telefoninumber";
     }
     if (!message.trim()) {
-      newErrors.message = "Palun kirjelda lühidalt oma soovi";
+      newErrors.message = isRu
+        ? "Пожалуйста, кратко опишите свой запрос"
+        : "Palun kirjelda lühidalt oma soovi";
     }
 
     setErrors(newErrors);
@@ -313,7 +318,9 @@ export default function HomePage({ lang }: HomePageProps) {
       if (!res.ok || !json?.ok) {
         setSubmitError(
           json?.error ||
-            "Päringu saatmine ebaõnnestus. Palun proovi uuesti või võta ühendust telefoni teel."
+            (isRu
+              ? "Отправка запроса не удалась. Пожалуйста, попробуйте ещё раз или свяжитесь по телефону."
+              : "Päringu saatmine ebaõnnestus. Palun proovi uuesti või võta ühendust telefoni teel.")
         );
         return;
       }
@@ -325,7 +332,9 @@ export default function HomePage({ lang }: HomePageProps) {
       setErrors({});
     } catch (err) {
       setSubmitError(
-        "Päringu saatmine ebaõnnestus. Palun kontrolli võrguühendust ja proovi uuesti."
+        isRu
+          ? "Отправка запроса не удалась. Пожалуйста, проверьте подключение к сети и попробуйте ещё раз."
+          : "Päringu saatmine ebaõnnestus. Palun kontrolli võrguühendust ja proovi uuesti."
       );
     } finally {
       setIsSubmitting(false);
@@ -744,10 +753,12 @@ export default function HomePage({ lang }: HomePageProps) {
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="text-sm font-semibold text-gray-900 sm:text-base">
-                  Saada päring
+                  {isRu ? "Отправить запрос" : "Saada päring"}
                 </h3>
                 <p className="text-xs text-gray-500 sm:text-sm">
-                  Täida vorm ja võtame sinuga ühendust esimesel võimalusel.
+                  {isRu
+                    ? "Заполните форму, и мы свяжемся с вами в ближайшее время."
+                    : "Täida vorm ja võtame sinuga ühendust esimesel võimalusel."}
                 </p>
               </div>
 
@@ -757,7 +768,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     htmlFor="name"
                     className="mb-1 block text-xs font-medium text-gray-700 sm:text-sm"
                   >
-                    Nimi
+                    {isRu ? "Имя" : "Nimi"}
                   </label>
                   <input
                     id="name"
@@ -782,7 +793,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     htmlFor="phone"
                     className="mb-1 block text-xs font-medium text-gray-700 sm:text-sm"
                   >
-                    Telefon
+                    {isRu ? "Телефон" : "Telefon"}
                   </label>
                   <input
                     id="phone"
@@ -807,7 +818,7 @@ export default function HomePage({ lang }: HomePageProps) {
                     htmlFor="message"
                     className="mb-1 block text-xs font-medium text-gray-700 sm:text-sm"
                   >
-                    Sõnum
+                    {isRu ? "Сообщение" : "Sõnum"}
                   </label>
                   <textarea
                     id="message"
@@ -834,11 +845,19 @@ export default function HomePage({ lang }: HomePageProps) {
                   disabled={isSubmitting}
                   className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-5 py-2.5 text-xs font-semibold text-gray-900 shadow-sm transition hover:bg-yellow-300 disabled:cursor-not-allowed disabled:opacity-80 sm:px-6 sm:text-sm"
                 >
-                  {isSubmitting ? "Saatmine..." : "Saada päring"}
+                  {isSubmitting
+                    ? isRu
+                      ? "Отправка..."
+                      : "Saatmine..."
+                    : isRu
+                    ? "Отправить запрос"
+                    : "Saada päring"}
                 </button>
                 <div className="flex flex-col gap-1 text-xs">
                   {submitted && !submitError && (
-                    <p className="text-green-600">Päring on vormistatud</p>
+                    <p className="text-green-600">
+                      {isRu ? "Запрос отправлен" : "Päring on vormistatud"}
+                    </p>
                   )}
                   {submitError && (
                     <p className="text-red-500">{submitError}</p>
@@ -944,7 +963,10 @@ export default function HomePage({ lang }: HomePageProps) {
           <p>
             © {new Date().getFullYear()} Kindel Elekter. All rights reserved.
           </p>
-          <p className="text-[11px]">{t.footerTagline}</p>
+          <div className="flex flex-col items-center gap-1 text-[11px] sm:items-end">
+            <p>{t.footerTagline}</p>
+            <p className="text-gray-400">SkyBuilding OÜ · KMKR: EE102011340</p>
+          </div>
         </div>
       </footer>
 
