@@ -944,10 +944,10 @@ export default function HomePage({ lang }: HomePageProps) {
 
               <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
                 <h3 className="text-sm font-semibold text-gray-900">
-                  B-pädevus
+                  {isRu ? "Лицензия" : "Litsents"}
                 </h3>
                 <p className="mt-2 text-sm text-gray-700">
-                  {isRu ? "Лицензия" : "Litsents"}
+                  B-pädevus
                 </p>
               </div>
             </div>
