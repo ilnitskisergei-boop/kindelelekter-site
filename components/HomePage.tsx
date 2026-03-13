@@ -893,7 +893,7 @@ export default function HomePage({ lang }: HomePageProps) {
             </form>
 
             {/* CONTACT INFO */}
-            <div className="mt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
+            <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
                 <h3 className="text-sm font-semibold text-gray-900">
                   {t.contactAreaLabel}
@@ -933,12 +933,21 @@ export default function HomePage({ lang }: HomePageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5 lg:col-span-2">
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
                 <p className="text-sm font-medium text-gray-900">
                   SkyBuilding OÜ
                 </p>
                 <p className="mt-1 text-sm text-gray-600">
                   KMKR: EE102011340
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                <h3 className="text-sm font-medium text-gray-700">
+                  {isRu ? "Лицензия" : "Litsents"}
+                </h3>
+                <p className="mt-1 text-sm font-semibold text-gray-900">
+                  B-pädevus
                 </p>
               </div>
             </div>
