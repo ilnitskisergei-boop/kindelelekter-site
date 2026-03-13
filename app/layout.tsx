@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elektritööd Tallinnas | Kindel Elekter",
+  title: "Elektrik Tallinn | Elektritööd Tallinn ja Harjumaa | Kindel Elekter",
   description:
-    "Elektritööd Tallinnas ja Harjumaal. Elektriku teenused, pistikupesad, valgustus, elektrikilbid, rikkeotsing.",
+    "Professional electrician in Tallinn and Harjumaa. Electrical installation, repair, apartment and house electrical works. Fast response and certified service.",
   openGraph: {
-    title: "Elektritööd Tallinnas | Kindel Elekter",
+    title: "Elektrik Tallinn | Elektritööd Tallinn ja Harjumaa | Kindel Elekter",
     description:
-      "Elektritööd Tallinnas ja Harjumaal. Elektriku teenused, pistikupesad, valgustus, elektrikilbid, rikkeotsing.",
+      "Professional electrician in Tallinn and Harjumaa. Electrical installation, repair, apartment and house electrical works. Fast response and certified service.",
     type: "website",
   },
   icons: {
