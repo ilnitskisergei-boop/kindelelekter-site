@@ -429,7 +429,7 @@ export default function HomePage({ lang }: HomePageProps) {
                 <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">
                   {t.heroExperienceLabel}
                 </p>
-                <p className="text-lg font-semibold text-white">
+                <p className="text-lg font-semibold leading-tight text-white break-words max-w-full">
                   {t.heroExperienceValue}
                 </p>
                 <p className="text-xs text-gray-400">
@@ -440,7 +440,7 @@ export default function HomePage({ lang }: HomePageProps) {
                 <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">
                   {t.heroResponseLabel}
                 </p>
-                <p className="text-lg font-semibold text-white">
+                <p className="text-lg font-semibold leading-tight text-white break-words max-w-full">
                   {t.heroResponseValue}
                 </p>
                 <p className="text-xs text-gray-400">
@@ -451,7 +451,7 @@ export default function HomePage({ lang }: HomePageProps) {
                 <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">
                   {t.heroSafetyLabel}
                 </p>
-                <p className="text-lg font-semibold text-white">
+                <p className="text-lg font-semibold leading-tight text-white break-words max-w-full">
                   {t.heroSafetyValue}
                 </p>
                 <p className="text-xs text-gray-400">
@@ -462,7 +462,7 @@ export default function HomePage({ lang }: HomePageProps) {
                 <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">
                   {t.heroProjectsLabel}
                 </p>
-                <p className="text-lg font-semibold text-white">
+                <p className="text-lg font-semibold leading-tight text-white break-words max-w-full">
                   {t.heroProjectsValue}
                 </p>
                 <p className="text-xs text-gray-400">
