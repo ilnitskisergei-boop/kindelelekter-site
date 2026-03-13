@@ -907,9 +907,12 @@ export default function HomePage({ lang }: HomePageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-5 lg:col-span-2">
-                <p className="text-sm font-medium text-gray-800">
-                  SkyBuilding OÜ · KMKR: EE102011340
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5 lg:col-span-2">
+                <p className="text-sm font-medium text-gray-900">
+                  SkyBuilding OÜ
+                </p>
+                <p className="mt-1 text-sm text-gray-600">
+                  KMKR: EE102011340
                 </p>
               </div>
             </div>
