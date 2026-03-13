@@ -941,18 +941,28 @@ export default function HomePage({ lang }: HomePageProps) {
       <section className="border-t border-gray-100 bg-white py-10 sm:py-12">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-lg font-semibold tracking-tight text-gray-900 sm:text-xl">
-            Elektritööd Tallinnas ja Harjumaal
+            {isRu
+              ? "Электромонтажные работы в Таллине и Харьюмаа"
+              : "Elektritööd Tallinnas ja Harjumaal"}
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
-            Teostame elektritöid nii uutele kui renoveeritavatele objektidele Tallinnas ja
-            Harjumaal. Kui otsid lahendust märksõnadele{" "}
-            <span className="font-medium text-gray-900">elektrik Tallinn</span>,{" "}
-            <span className="font-medium text-gray-900">elektritööd Harjumaa</span>,{" "}
-            <span className="font-medium text-gray-900">korteri elektritööd</span>,{" "}
-            <span className="font-medium text-gray-900">elektrikilbi uuendus</span> või{" "}
-            <span className="font-medium text-gray-900">valgustuse paigaldus</span>, pakume
-            läbimõeldud ja turvalisi lahendusi, mis vastavad kehtivatele nõuetele ja sinu
-            igapäevastele vajadustele.
+            {isRu ? (
+              <>
+                Выполняем электромонтажные работы на новых и ремонтируемых объектах в Таллине и
+                Харьюмаа. Если вам нужен электрик в Таллине, электромонтаж в Харьюмаа, работы в
+                квартире, модернизация электрощита или установка освещения, предлагаем безопасные и
+                продуманные решения в соответствии с действующими требованиями и вашими
+                повседневными задачами.
+              </>
+            ) : (
+              <>
+                Teostame elektritöid nii uutele kui renoveeritavatele objektidele Tallinnas ja
+                Harjumaal. Kui otsid lahendust märksõnadele elektrik Tallinn, elektritööd Harjumaa,
+                korteri elektritööd, elektrikilbi uuendus või valgustuse paigaldus, pakume
+                läbimõeldud ja turvalisi lahendusi, mis vastavad kehtivatele nõuetele ja sinu
+                igapäevastele vajadustele.
+              </>
+            )}
           </p>
         </div>
       </section>
@@ -962,7 +972,9 @@ export default function HomePage({ lang }: HomePageProps) {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-gray-500 sm:flex-row sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-1 text-[11px] sm:items-end">
             <p>{t.footerTagline}</p>
-            <p className="text-gray-400">SkyBuilding OÜ · KMKR: EE102011340</p>
+            <p className="text-[11px] font-medium text-gray-500">
+              SkyBuilding OÜ · KMKR: EE102011340
+            </p>
           </div>
           <p>
             © {new Date().getFullYear()} Kindel Elekter. All rights reserved.
