@@ -960,13 +960,13 @@ export default function HomePage({ lang }: HomePageProps) {
       {/* FOOTER */}
       <footer className="border-t border-gray-100 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-gray-500 sm:flex-row sm:px-6 lg:px-8">
-          <p>
-            © {new Date().getFullYear()} Kindel Elekter. All rights reserved.
-          </p>
           <div className="flex flex-col items-center gap-1 text-[11px] sm:items-end">
             <p>{t.footerTagline}</p>
             <p className="text-gray-400">SkyBuilding OÜ · KMKR: EE102011340</p>
           </div>
+          <p>
+            © {new Date().getFullYear()} Kindel Elekter. All rights reserved.
+          </p>
         </div>
       </footer>
 
