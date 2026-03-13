@@ -868,44 +868,50 @@ export default function HomePage({ lang }: HomePageProps) {
 
             {/* CONTACT INFO */}
             <div className="mt-8 grid gap-8 grid-cols-1 lg:grid-cols-2">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    {t.contactAreaLabel}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-700">
-                    {t.contactAreaValue}
-                  </p>
-                </div>
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {t.contactAreaLabel}
+                </h3>
+                <p className="mt-2 text-sm text-gray-700">
+                  {t.contactAreaValue}
+                </p>
+              </div>
 
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    {t.contactPhoneLabel}
-                  </h3>
-                  <a
-                    href={`tel:${t.contactPhoneValue}`}
-                    className="mt-2 inline-flex text-sm font-medium text-gray-800 hover:text-gray-900"
-                  >
-                    +372 539 026 54
-                  </a>
-                </div>
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {t.contactPhoneLabel}
+                </h3>
+                <a
+                  href={`tel:${t.contactPhoneValue}`}
+                  className="mt-2 inline-flex text-sm font-medium text-gray-800 hover:text-gray-900"
+                >
+                  +372 539 026 54
+                </a>
+              </div>
 
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    {t.contactEmailLabel}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-700">
-                    {t.contactEmailValue}
-                  </p>
-                </div>
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {t.contactEmailLabel}
+                </h3>
+                <p className="mt-2 text-sm text-gray-800">
+                  {t.contactEmailValue}
+                </p>
+              </div>
 
-                <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
-                  <h3 className="text-sm font-semibold text-gray-900">
-                    {t.contactHoursLabel}
-                  </h3>
-                  <p className="mt-2 whitespace-pre-line text-sm text-gray-700">
-                    {t.contactHoursValue}
-                  </p>
-                </div>
+              <div className="rounded-2xl border border-gray-100 bg-gray-50 p-5">
+                <h3 className="text-sm font-semibold text-gray-900">
+                  {t.contactHoursLabel}
+                </h3>
+                <p className="mt-2 whitespace-pre-line text-sm text-gray-700">
+                  {t.contactHoursValue}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-5 lg:col-span-2">
+                <p className="text-sm font-medium text-gray-800">
+                  SkyBuilding OÜ · KMKR: EE102011340
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -972,9 +978,6 @@ export default function HomePage({ lang }: HomePageProps) {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-gray-500 sm:flex-row sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-1 text-[11px] sm:items-end">
             <p>{t.footerTagline}</p>
-            <p className="text-[11px] font-medium text-gray-500">
-              SkyBuilding OÜ · KMKR: EE102011340
-            </p>
           </div>
           <p>
             © {new Date().getFullYear()} Kindel Elekter. All rights reserved.
