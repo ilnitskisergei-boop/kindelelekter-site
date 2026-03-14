@@ -698,7 +698,7 @@ export default function HomePage({ lang }: HomePageProps) {
                 "/work/work6.jpg",
                 "/work/work7.jpg",
                 "/work/work8.jpg",
-              ].map((src) => (
+              ].map((src, index) => (
                   <button
                     key={src}
                     type="button"
@@ -709,7 +709,8 @@ export default function HomePage({ lang }: HomePageProps) {
                       src={src}
                       alt={t.worksTitle}
                       className="h-56 w-full object-cover transition-transform duration-200 group-hover:scale-[1.04]"
-                      loading="lazy"
+                      loading={index < 2 ? "eager" : "lazy"}
+                      fetchPriority={index < 2 ? "high" : undefined}
                     />
                   </button>
                 ))}
