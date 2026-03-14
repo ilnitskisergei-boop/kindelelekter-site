@@ -90,7 +90,7 @@ const content: Record<
     heroEyebrow:  "Usaldusväärsed elektritööd Tallinnas ja Harjumaal",
     heroTitle: "Elektritööd Tallinnas ja Harjumaal",
     heroSubtitle:
-    "Sertifitseeritud elektrik korteritele, majadele ja ettevõtetele.",
+      "Usaldusväärne elektrik. Korterite, eramajade ja äripindade elektritööd.",
     heroPrimaryCta: "Küsi pakkumist",
     heroSecondaryCta: "Helista",
     heroBadgeLine: "Korterid ja majad • Selge hinnapakkumine • Kvaliteetne töö",
@@ -174,7 +174,7 @@ const content: Record<
     heroEyebrow: "Надёжные электротехнические работы",
     heroTitle: "Электромонтажные работы в Таллине и Харьюмаа",
     heroSubtitle:
-      "Быстрый и надёжный электрик для квартир, домов и бизнеса",
+      "Надёжный электрик. Электромонтаж в квартирах, частных домах и коммерческих помещениях.",
     heroPrimaryCta: "Запросить цену",
     heroSecondaryCta: "Позвонить",
     heroBadgeLine:
@@ -430,10 +430,10 @@ export default function HomePage({ lang }: HomePageProps) {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-400">
                 {t.heroEyebrow}
               </p>
-              <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+              <h1 className="text-3xl font-bold md:text-4xl">
                 {t.heroTitle}
               </h1>
-              <p className="mt-4 text-base text-gray-300 sm:text-lg">
+              <p className="mt-4 text-lg text-gray-300">
                 {t.heroSubtitle}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
