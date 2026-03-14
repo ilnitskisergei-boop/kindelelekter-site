@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type Lang = "et" | "ru";
 
@@ -267,79 +267,82 @@ export default function HomePage({ lang }: HomePageProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError(null);
-    setSubmitted(false);
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setSubmitError(null);
+      setSubmitted(false);
 
-    const newErrors: { name?: string; phone?: string; message?: string } = {};
+      const newErrors: { name?: string; phone?: string; message?: string } = {};
 
-    if (!name.trim()) {
-      newErrors.name = isRu ? "Пожалуйста, укажите имя" : "Palun sisesta nimi";
-    }
-    if (!phone.trim()) {
-      newErrors.phone = isRu ? "Пожалуйста, укажите телефон" : "Palun sisesta telefon";
-    } else if (!/^[0-9+\s-]{6,}$/.test(phone.trim())) {
-      newErrors.phone = isRu
-        ? "Пожалуйста, введите корректный номер телефона"
-        : "Palun sisesta korrektne telefoninumber";
-    }
-    if (!message.trim()) {
-      newErrors.message = isRu
-        ? "Пожалуйста, кратко опишите свой запрос"
-        : "Palun kirjelda lühidalt oma soovi";
-    }
+      if (!name.trim()) {
+        newErrors.name = isRu ? "Пожалуйста, укажите имя" : "Palun sisesta nimi";
+      }
+      if (!phone.trim()) {
+        newErrors.phone = isRu ? "Пожалуйста, укажите телефон" : "Palun sisesta telefon";
+      } else if (!/^[0-9+\s-]{6,}$/.test(phone.trim())) {
+        newErrors.phone = isRu
+          ? "Пожалуйста, введите корректный номер телефона"
+          : "Palun sisesta korrektne telefoninumber";
+      }
+      if (!message.trim()) {
+        newErrors.message = isRu
+          ? "Пожалуйста, кратко опишите свой запрос"
+          : "Palun kirjelda lühidalt oma soovi";
+      }
 
-    setErrors(newErrors);
+      setErrors(newErrors);
 
-    if (Object.keys(newErrors).length > 0) {
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          message,
-          company,
-          lang,
-        }),
-      });
-
-      const json = await res.json().catch(() => null);
-
-      if (!res.ok || !json?.ok) {
-        setSubmitError(
-          json?.error ||
-            (isRu
-              ? "Отправка запроса не удалась. Пожалуйста, попробуйте ещё раз или свяжитесь по телефону."
-              : "Päringu saatmine ebaõnnestus. Palun proovi uuesti või võta ühendust telefoni teel.")
-        );
+      if (Object.keys(newErrors).length > 0) {
         return;
       }
 
-      setSubmitted(true);
-      setName("");
-      setPhone("");
-      setMessage("");
-      setErrors({});
-    } catch (err) {
-      setSubmitError(
-        isRu
-          ? "Отправка запроса не удалась. Пожалуйста, проверьте подключение к сети и попробуйте ещё раз."
-          : "Päringu saatmine ebaõnnestus. Palun kontrolli võrguühendust ja proovi uuesti."
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      try {
+        setIsSubmitting(true);
+
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            message,
+            company,
+            lang,
+          }),
+        });
+
+        const json = await res.json().catch(() => null);
+
+        if (!res.ok || !json?.ok) {
+          setSubmitError(
+            json?.error ||
+              (isRu
+                ? "Отправка запроса не удалась. Пожалуйста, попробуйте ещё раз или свяжитесь по телефону."
+                : "Päringu saatmine ebaõnnestus. Palun proovi uuesti või võta ühendust telefoni teel.")
+          );
+          return;
+        }
+
+        setSubmitted(true);
+        setName("");
+        setPhone("");
+        setMessage("");
+        setErrors({});
+      } catch (err) {
+        setSubmitError(
+          isRu
+            ? "Отправка запроса не удалась. Пожалуйста, проверьте подключение к сети и попробуйте ещё раз."
+            : "Päringu saatmine ebaõnnestus. Palun kontrolli võrguühendust ja proovi uuesti."
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [name, phone, message, company, lang, isRu]
+  );
 
   return (
     <div className="relative min-h-screen bg-white text-gray-900">
@@ -761,7 +764,6 @@ export default function HomePage({ lang }: HomePageProps) {
 
             {/* CONTACT FORM */}
             <form
-              id="contact"
               onSubmit={handleSubmit}
               className="mt-8 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-sm sm:p-7"
               noValidate
